@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>CharonZR</title>
   
   
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-07-13T07:14:00.567Z</updated>
+  <updated>2021-07-16T11:47:00.852Z</updated>
   <id>http://example.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>ZhouRui</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA学习基础(一)</title>
+    <link href="http://example.com/2021/07/16/JAVA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80-%E4%B8%80/"/>
+    <id>http://example.com/2021/07/16/JAVA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80-%E4%B8%80/</id>
+    <published>2021-07-16T06:41:52.000Z</published>
+    <updated>2021-07-16T11:47:00.852Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;变量的定义和使用&quot;&gt;&lt;a href=&quot;#变量的定义和使用&quot; class=&quot;headerlink&quot; title=&quot;变量的定义和使用&quot;&gt;&lt;/a&gt;变量的定义和使用&lt;/h1&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cla</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>git_hexo</title>
