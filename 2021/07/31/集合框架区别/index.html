@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>集合框架区别 | Hexo</title>
+  <meta name="description" content="集合框架HashMap和HashTable的区别 ​    1.HashMap是HashTable的轻量级实现（即非线程安全的实现），他们都完成了Map接口，主要区别来自于HashMap允许空（null）键和空（null）值，由于非线程安全，在效率上可能高于HashTable。 ​    2.HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。 ​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合框架区别">
+<meta property="og:url" content="http://example.com/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="CharonZR">
+<meta property="og:description" content="集合框架HashMap和HashTable的区别 ​    1.HashMap是HashTable的轻量级实现（即非线程安全的实现），他们都完成了Map接口，主要区别来自于HashMap允许空（null）键和空（null）值，由于非线程安全，在效率上可能高于HashTable。 ​    2.HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。 ​">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-31T00:46:48.000Z">
+<meta property="article:modified_time" content="2021-07-31T01:08:44.002Z">
+<meta property="article:author" content="ZhouRui">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="CharonZR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/CharonZR" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">极北贪星</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Ares &amp; DreamBoat</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> SuZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/CharonZR" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%B5%E5%96%B5/">喵喵</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA%E5%AD%A6%E4%B9%A0/" rel="tag">JAVA学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%96%B5%E5%96%B5/" rel="tag">喵喵</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/JAVA%E5%AD%A6%E4%B9%A0/" style="font-size: 13px;">JAVA学习</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 13px;">其他</a> <a href="/tags/%E5%96%B5%E5%96%B5/" style="font-size: 13px;">喵喵</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13px;">面试</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" class="title">集合框架区别</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-31T00:46:48.000Z" itemprop="datePublished">2021-07-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/16/JAVA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E4%B8%80/" class="title">JAVA学习基础(一)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-16T06:41:52.000Z" itemprop="datePublished">2021-07-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/13/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title">git_hexo</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-13T07:12:52.000Z" itemprop="datePublished">2021-07-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%96%B5%E5%96%B5/">喵喵</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/13/%E5%96%B5%E5%96%B5/" class="title">喵喵</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-13T02:05:09.000Z" itemprop="datePublished">2021-07-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/13/%E6%B5%8B%E8%AF%95/" class="title">测试</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-13T01:08:51.000Z" itemprop="datePublished">2021-07-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-集合框架区别" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      集合框架区别
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" class="article-date">
+	  <time datetime="2021-07-31T00:46:48.000Z" itemprop="datePublished">2021-07-31</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" class="leancloud_visitors"  data-flag-title="集合框架区别">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h1><h2 id="HashMap和HashTable的区别"><a href="#HashMap和HashTable的区别" class="headerlink" title="HashMap和HashTable的区别"></a>HashMap和HashTable的区别</h2><blockquote>
+<p>​    1.HashMap是HashTable的轻量级实现（即非线程安全的实现），他们都完成了Map接口，主要区别来自于HashMap允许空（null）键和空（null）值，由于非线程安全，在效率上可能高于HashTable。</p>
+<p>​    2.HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。</p>
+<p>​    3.HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。因为contains方法容易让人引起误解。</p>
+<p>​    4.Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现。</p>
+<p>​    5.Hashtable的方法是Synchronize的，而HashMap不是，在多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。</p>
+</blockquote>
+<h2 id="ArrayList和LinkedList区别"><a href="#ArrayList和LinkedList区别" class="headerlink" title="ArrayList和LinkedList区别"></a>ArrayList和LinkedList区别</h2><blockquote>
+<ol>
+<li>ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。</li>
+<li>对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。</li>
+<li>对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据</li>
+</ol>
+</blockquote>
+<h2 id="List和Set区别"><a href="#List和Set区别" class="headerlink" title="List和Set区别"></a>List和Set区别</h2><blockquote>
+<p>两个接口都是继承自Collection，是常用来存放数据项的集合，主要区别如下：</p>
+<ol>
+<li>List和Set之间很重要的一个区别是是否允许重复元素的存在，在List中允许插入重复的元素，而在Set中不允许重复元素存在。</li>
+<li>与元素先后存放顺序有关，List是有序集合，会保留元素插入时的顺序，Set是无序集合。</li>
+<li>List可以通过下标来访问，而Set不能。</li>
+</ol>
+</blockquote>
+<h2 id="HashSet和HashMap区别"><a href="#HashSet和HashMap区别" class="headerlink" title="HashSet和HashMap区别"></a>HashSet和HashMap区别</h2><blockquote>
+<p>HashSet的底层是HashMap</p>
+</blockquote>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th><em>HashMap</em></th>
+<th><em>HashSet</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HashMap实现了Map接口</td>
+<td>HashSet实现了Set接口</td>
+</tr>
+<tr>
+<td>HashMap储存键值对</td>
+<td>HashSet仅仅存储对象</td>
+</tr>
+<tr>
+<td>使用put()方法将元素放入map中</td>
+<td>使用add()方法将元素放入set中</td>
+</tr>
+<tr>
+<td>HashMap中使用键对象来计算hashcode值</td>
+<td>HashSet使用成员对象来计算hashcode值，对于两个对象来说hashcode可能相同，所以equals()方法用来判断对象的相等性，如果两个对象不同的话，那么返回false</td>
+</tr>
+<tr>
+<td>HashMap比较快，因为是使用唯一的键来获取对象</td>
+<td>HashSet较HashMap来说比较慢</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h2 id="ArrayList和HashSet区别"><a href="#ArrayList和HashSet区别" class="headerlink" title="ArrayList和HashSet区别"></a>ArrayList和HashSet区别</h2><blockquote>
+<p>1.HashSet 是不重复的 而且是无序的!</p>
+<p>​     唯一性保证. 重复对象equals方法返回为true ，重复对象hashCode方法返回相同的整数</p>
+<p>​     HashSet其实就是一个HashMap,只是你只能通过Set接口操作这个HashMap的key部分,</p>
+<p>2.ArrayList是可重复的 有序的</p>
+<p>​    特点：查询效率高，增删效率低 轻量级 线程不安全。</p>
+<p>arraylist：在数据的插入和删除方面速度不佳，但是在随意提取方面较快</p>
+</blockquote>
+<h2 id="HashSet和TreeSet区别"><a href="#HashSet和TreeSet区别" class="headerlink" title="HashSet和TreeSet区别"></a>HashSet和TreeSet区别</h2><blockquote>
+<p><strong>一、HashSet</strong></p>
+<p>HashSet内部的数据结构是哈希表，是线程不安全的。</p>
+<p>HashSet当中，保证集合中元素是唯一的方法。</p>
+<p>通过对象的hashCode和equals方法来完成对象唯一性的判断。</p>
+<p>假如，对象的hashCode值是一样的，那么就要用equals方法进行比较。</p>
+<p>假如，结果是true，那么就要视作相同元素，不存。</p>
+<p>假如，结果是false，那么就视为不同元素，存储。</p>
+<p>注意了，假如，元素要存储到HashCode当中，那么就一定要覆盖hashCode方法以及equals方法。</p>
+<p><strong>二、TreeSet</strong></p>
+<p>TreeSet能够对Set集合当中的元素进行排序，是线程不安全的。</p>
+<p>TreeSet当中，判断元素唯一性的方法是依据比较方法的返回结果是否为0，假如是0，那么是相同的元素，不存，假如不是0，那么就是不同的元素，存储。</p>
+<p>TreeSet对元素进行排序的方式：</p>
+<p>1、元素自身具备比较功能，也就是自然排序，需要实现Comparable接口，并覆盖其compareTo方法。</p>
+<p>2、元素自身不具备比较功能，那么就要实现Comparator接口，并覆盖其compare方法。</p>
+<p>除此之外，还要注意了，LinkedHashSet是一种有序的Set集合。</p>
+<p>也就是其元素的存入和输出的顺序是相同的。</p>
+</blockquote>
+<h2 id="HashMap和TreeMap区别"><a href="#HashMap和TreeMap区别" class="headerlink" title="HashMap和TreeMap区别"></a>HashMap和TreeMap区别</h2><blockquote>
+<p>HashMap的底层是Array，所以HashMap在添加，查找，删除等方法上面速度会非常快。而TreeMap的底层是一个Tree结构，所以速度会比较慢。</p>
+<p>另外HashMap因为要保存一个Array，所以会造成空间的浪费，而TreeMap只保存要保持的节点，所以占用的空间比较小。</p>
+<p>HashMap如果出现hash冲突的话，效率会变差，不过在java 8进行TreeNode转换之后，效率有很大的提升。</p>
+<p>TreeMap在添加和删除节点的时候会进行重排序，会对性能有所影响。           </p>
+</blockquote>
+<h2 id="ArrayList和Vector区别"><a href="#ArrayList和Vector区别" class="headerlink" title="ArrayList和Vector区别"></a>ArrayList和Vector区别</h2><blockquote>
+<ol>
+<li>Vector是线程安全的，ArrayList不是线程安全的。</li>
+<li>ArrayList在底层数组不够用时在原来的基础上扩展0.5倍，Vector是扩展1倍。</li>
+</ol>
+</blockquote>
+<h2 id="Array和ArrayList区别"><a href="#Array和ArrayList区别" class="headerlink" title="Array和ArrayList区别"></a>Array和ArrayList区别</h2><blockquote>
+<p>1.Array可以存基本数据类型和对象，ArrayList只能存对象。</p>
+<p>2.Array没有ArrayList内置的方法多。</p>
+<p>3.Array是指定固定大小的，而ArrayList可以自动进行扩容操作。</p>
+</blockquote>
+<h2 id="Iterator和Listiterator区别"><a href="#Iterator和Listiterator区别" class="headerlink" title="Iterator和Listiterator区别"></a>Iterator和Listiterator区别</h2><blockquote>
+<p>1.Iterator可以遍历set和List集合，而Listiterator只能遍历List集合。</p>
+<p>2.Iterator只能单向遍历，而Listiterator可以实现双向遍历。</p>
+<p>3.ListIterator从Iterator接口继承并实现来额外的一些功能方法。</p>
+</blockquote>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" title="集合框架区别" target="_blank" rel="external">http://example.com/2021/07/31/集合框架区别/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/CharonZR" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/CharonZR" target="_blank"><span class="text-dark">极北贪星</span><small class="ml-1x">Ares &amp; DreamBoat</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/07/16/JAVA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E4%B8%80/" title="JAVA学习基础(一)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/CharonZR" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: true,
+    appId: 'ju8vRbqqWdyDMjPfBvINd2DA-gzGzoHsz',
+    appKey: '0Imca0SeOUg1VUrUKxbCQsy2',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: true
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/ygbhf/clicklove/clicklove.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+

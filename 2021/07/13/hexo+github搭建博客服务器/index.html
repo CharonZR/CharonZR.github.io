@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>git_hexo | Hexo</title>
+  <meta name="description" content="hexo+github搭建博客服务器  csdn,简书,有道笔记 - 广告比较多 hexo+github[比较慢,翻墙]&#x2F;gitee[Git pages服务器 - 维护]&#x2F;阿里云服务器   安装nodejs  非中文的非特殊字符的目录中[目录中不要出现空格或者带有特殊符号的] D:&#x2F;node-v14.17.3-win-x64   环境变量的配置  桌面计算机 - 右击 - 属性 - 高级系统设置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git_hexo">
+<meta property="og:url" content="http://example.com/2021/07/13/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="CharonZR">
+<meta property="og:description" content="hexo+github搭建博客服务器  csdn,简书,有道笔记 - 广告比较多 hexo+github[比较慢,翻墙]&#x2F;gitee[Git pages服务器 - 维护]&#x2F;阿里云服务器   安装nodejs  非中文的非特殊字符的目录中[目录中不要出现空格或者带有特殊符号的] D:&#x2F;node-v14.17.3-win-x64   环境变量的配置  桌面计算机 - 右击 - 属性 - 高级系统设置">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-13T07:12:52.000Z">
+<meta property="article:modified_time" content="2021-07-13T07:14:00.567Z">
+<meta property="article:author" content="ZhouRui">
+<meta property="article:tag" content="其他">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2021/07/13/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="CharonZR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/CharonZR" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">极北贪星</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Ares &amp; DreamBoat</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> SuZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/CharonZR" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%B5%E5%96%B5/">喵喵</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA%E5%AD%A6%E4%B9%A0/" rel="tag">JAVA学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%96%B5%E5%96%B5/" rel="tag">喵喵</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/JAVA%E5%AD%A6%E4%B9%A0/" style="font-size: 13px;">JAVA学习</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 13px;">其他</a> <a href="/tags/%E5%96%B5%E5%96%B5/" style="font-size: 13px;">喵喵</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 13px;">测试</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13px;">面试</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" class="title">集合框架区别</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-31T00:46:48.000Z" itemprop="datePublished">2021-07-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/16/JAVA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E4%B8%80/" class="title">JAVA学习基础(一)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-16T06:41:52.000Z" itemprop="datePublished">2021-07-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/13/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="title">git_hexo</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-13T07:12:52.000Z" itemprop="datePublished">2021-07-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%96%B5%E5%96%B5/">喵喵</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/13/%E5%96%B5%E5%96%B5/" class="title">喵喵</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-13T02:05:09.000Z" itemprop="datePublished">2021-07-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%B5%8B%E8%AF%95/">测试</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/13/%E6%B5%8B%E8%AF%95/" class="title">测试</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-13T01:08:51.000Z" itemprop="datePublished">2021-07-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-hexo+github搭建博客服务器" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git_hexo
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/07/13/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+	  <time datetime="2021-07-13T07:12:52.000Z" itemprop="datePublished">2021-07-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/2021/07/13/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="leancloud_visitors"  data-flag-title="git_hexo">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/13/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.6k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="hexo-github搭建博客服务器"><a href="#hexo-github搭建博客服务器" class="headerlink" title="hexo+github搭建博客服务器"></a>hexo+github搭建博客服务器</h1><blockquote>
+<ol>
+<li>csdn,简书,有道笔记 - <strong>广告比较多</strong></li>
+<li>hexo+github[比较慢,翻墙]/gitee[Git pages服务器 - 维护]/<strong>阿里云服务器</strong></li>
+</ol>
+</blockquote>
+<h1 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h1><blockquote>
+<ol>
+<li>非中文的非特殊字符的目录中[目录中不要出现空格或者带有特殊符号的]</li>
+<li>D:/node-v14.17.3-win-x64</li>
+</ol>
+</blockquote>
+<h2 id="环境变量的配置"><a href="#环境变量的配置" class="headerlink" title="环境变量的配置"></a>环境变量的配置</h2><blockquote>
+<ol>
+<li><p>桌面计算机 - 右击 - 属性 - 高级系统设置 - 环境变量(N)</p>
+</li>
+<li><p>定位到下方的系统变量</p>
+</li>
+<li><p>定位到变量名 - Path - 编辑 - 新建</p>
+</li>
+<li><p>D:/node-v14.17.3-win-x64</p>
+</li>
+<li><p>一定要关闭所有的环境变量配置的窗口 - 确定</p>
+</li>
+<li><p>打开终端[如果终端已经打开了,关闭 - 重新打开]</p>
+<p>win[微软图标]+r - 输入cmd  - 输入如下指令检测nodejs是否配置成功</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line"><span class="number">6</span>.<span class="number">14</span>.<span class="number">5</span> 出现版本号,则说明配置成功</span><br><span class="line"></span><br><span class="line">如果出现了不是内部或者外部的命令的同学,请检查自己的nodejs解压缩之后的路径是否</span><br><span class="line">成功配置到了<span class="built_in">path</span>中</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h2 id="简单认识npm"><a href="#简单认识npm" class="headerlink" title="简单认识npm"></a>简单认识npm</h2><blockquote>
+<p>npm是javascript的一个**包[前端框架]**管理工具,并且是nodejs平台默认的包管理工具.</p>
+<p>通过npm可以安装,共享,分发代码,管理项目依赖关系.</p>
+<p>类似于java中的maven或者gradle[强大的项目构建工具以及项目依赖管理工具]</p>
+</blockquote>
+<h2 id="npm简单使用"><a href="#npm简单使用" class="headerlink" title="npm简单使用"></a>npm简单使用</h2><h3 id="修改镜像"><a href="#修改镜像" class="headerlink" title="修改镜像"></a>修改镜像</h3><blockquote>
+<p>为了下载速度变快,修改npm的镜像</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>验证一下,镜像是否成功修改了</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">https://<span class="title">registry.npm.taobao.org</span>/</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="简单使用-不需要操作"><a href="#简单使用-不需要操作" class="headerlink" title="简单使用 - 不需要操作"></a>简单使用 - 不需要操作</h2><blockquote>
+<ol>
+<li><p>下载bootstrap</p>
+<p>npm install 框架名称  - 默认下载的是最新的版本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install bootstrap@<span class="number">3</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h1 id="Hexo官网"><a href="#Hexo官网" class="headerlink" title="Hexo官网"></a>Hexo官网</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<ol>
+<li><p>假设你在D盘根目录下新建了一个文件夹hello-hexo[博客项目的根目录]</p>
+</li>
+<li><p>win+r - 打开终端</p>
+</li>
+<li><p>通过dos命令进入到hello-hexo目录中</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C:/<span class="title">User</span>/<span class="title">admin</span>&gt;<span class="title">d</span>:</span></span><br><span class="line"><span class="function"><span class="title">D</span>:&gt;<span class="title">cd</span> <span class="title">hello</span>-<span class="title">hexo</span></span></span><br><span class="line"><span class="function"><span class="title">D</span>:/<span class="title">hello</span>-<span class="title">hexo</span>&gt;<span class="title">npm</span> <span class="title">install</span> <span class="title">hexo</span>-<span class="title">cli</span> -<span class="title">g</span></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h2 id="创建真正的博客目录"><a href="#创建真正的博客目录" class="headerlink" title="创建真正的博客目录"></a>创建真正的博客目录</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:/<span class="title">hello</span>-<span class="title">hexo</span>&gt;<span class="title">hexo</span> <span class="title">init</span> <span class="title">hello</span>-<span class="title">blog</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hello-blog</span><br><span class="line"><span class="function">D:/<span class="title">hello</span>-<span class="title">hexo</span>/<span class="title">hello</span>-<span class="title">blog</span>&gt;<span class="title">npm</span> <span class="title">install</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="测试-启动博客服务器"><a href="#测试-启动博客服务器" class="headerlink" title="测试 - 启动博客服务器"></a>测试 - 启动博客服务器</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:/<span class="title">hello</span>-<span class="title">hexo</span>/<span class="title">hello</span>-<span class="title">blog</span>&gt;<span class="title">hexo</span> <span class="title">s</span></span></span><br></pre></td></tr></table></figure>
+
+<p><code>关闭服务器</code></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+c</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>打开浏览器输入:localhost:4000</strong></em></p>
+<h2 id="常用主题模板"><a href="#常用主题模板" class="headerlink" title="常用主题模板"></a>常用主题模板</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zgd826237710/article/details/99671027">https://blog.csdn.net/zgd826237710/article/details/99671027</a></p>
+<p>使用git命令来进行克隆,需要提前安装好git,检测git是否安装成功,<strong>重新打开终端</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="注册码云账号"><a href="#注册码云账号" class="headerlink" title="注册码云账号"></a>注册码云账号</h2><blockquote>
+<p>推荐用QQ注册一下</p>
+<p>本地配置码云账号信息 - 配置文件 - 位置windows的用户主目录下</p>
+<p>C:/User/计算机用户名 - 观察是否存在**.gitconfig**文件,添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[user]	email = 码云的QQ邮箱	name = 用户名</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="安装模板"><a href="#安装模板" class="headerlink" title="安装模板"></a>安装模板</h2><blockquote>
+<p>通过cmd进入到hello-blog目录中的themes目录中</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:/<span class="title">hello</span>-<span class="title">hexo</span>/<span class="title">hello</span>-<span class="title">blog</span>&gt;<span class="title">cd</span> <span class="title">themesD</span>://<span class="title">hello</span>-<span class="title">hexo</span>/<span class="title">hello</span>-<span class="title">blog</span>/<span class="title">themes</span>&gt;<span class="title">git</span> <span class="title">clone</span> <span class="title">https</span>://<span class="title">gitee.com</span>/<span class="title">guancg</span>/<span class="title">hexo</span>-<span class="title">theme</span>-<span class="title">pure.git</span></span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>或者直接从github上直接clone</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/cofess/hexo-theme-pure.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="更新主题配置"><a href="#更新主题配置" class="headerlink" title="更新主题配置"></a>更新主题配置</h1><blockquote>
+<ol>
+<li><p>指定新的主题</p>
+<p>hello-blog目录下的_config.yml文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">hexo-theme-pure</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>重启服务器hexo s</li>
+</ol>
+</blockquote>
+<h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><p>hexo-theme-pure/_config.yml文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">overriden  author:</span> <span class="string">亲爱的管管</span>  <span class="attr">author_title:</span> <span class="string">高级打字员</span>  <span class="attr">author_description:</span> <span class="string">个人简介。</span>  <span class="attr">location:</span> <span class="string">SuZhou,</span> <span class="string">China</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h1><blockquote>
+<p>语法的编辑器 - <a target="_blank" rel="noopener" href="https://typora.io/">https://typora.io/</a></p>
+<p>文件的后缀是md</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">常用语法如下:1. 标题的语法:1~6标题 - # 一级标题    ## 二级标题   2. 代码块 - java,js,mysql...​~~~java 敲enter键3. 列表3-1. 无序列表     * 列表名称     有序列表     1. 列表名称4. 高亮显示   `高亮显示内容`5. 加粗字体   **粗体**6. 斜体   *斜体*7. 粗+斜   ***粗斜***8. 段落   &gt; 空格9. 引入外部图片   ![](xx.png)10. 表格</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="新建博文"><a href="#新建博文" class="headerlink" title="新建博文"></a>新建博文</h1><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D://<span class="title">hello</span>-<span class="title">hexo</span>/<span class="title">hello</span>-<span class="title">blog</span>&gt;<span class="title">hexo</span> <span class="title">n</span> <span class="title">java</span></span></span><br></pre></td></tr></table></figure>
+
+<p>效果:hello-blog目录下的source/_ports/自动生成一个java.md文件</p>
+<p>重启blog服务器</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D://<span class="title">hello</span>-<span class="title">hexo</span>/<span class="title">hello</span>-<span class="title">blog</span>&gt;<span class="title">hexo</span> <span class="title">s</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="主题的侧边栏"><a href="#主题的侧边栏" class="headerlink" title="主题的侧边栏"></a>主题的侧边栏</h1><blockquote>
+<p>侧边栏的链接生效</p>
+<p>将/hello-blog/themes/hexo-theme-pure/_source/下的除了_data文件夹,其余文件夹</p>
+<p>拷贝一份放入到hello-blog目录下的source目录中即可</p>
+</blockquote>
+<h1 id="文章的分类和标签"><a href="#文章的分类和标签" class="headerlink" title="文章的分类和标签"></a>文章的分类和标签</h1><blockquote>
+<p>只需要在文章的.md文件的自动生成的头部添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title: javadate: 2021-07-13 08:44:42categories: javatags: java</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="博客的语言环境设置"><a href="#博客的语言环境设置" class="headerlink" title="博客的语言环境设置"></a>博客的语言环境设置</h1><blockquote>
+<p>设置中文</p>
+<p>hello-blog下的_config.yml文件中</p>
+<p>language: zh-CN</p>
+</blockquote>
+<h1 id="图片显示问题"><a href="#图片显示问题" class="headerlink" title="图片显示问题"></a>图片显示问题</h1><blockquote>
+<ol>
+<li><p>安装插件 - npm install <a target="_blank" rel="noopener" href="https://gitee.com/guancg/hexo-asset-image.git">https://gitee.com/guancg/hexo-asset-image.git</a> –save</p>
+</li>
+<li><p>需要到hello-blog/_config.yml文件中进行配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li><p>hexo n 机器学习</p>
+<p><code>效果就是除了生成了机器学习.md还有一个机器学习文件夹,那么这篇文章的所有的图片就可以存储在机器学习文件夹中</code></p>
+</li>
+<li><p>hexo s</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="内置搜索的功能"><a href="#内置搜索的功能" class="headerlink" title="内置搜索的功能"></a>内置搜索的功能</h1><blockquote>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Searchsearch:insight: true # you need to install `hexo-generator-json-content` before using Insight Searchbaidu: false # you need to disable other search engines to use Baidu search</span></span><br></pre></td></tr></table></figure>
+
+<p>安装内置搜索插件</p>
+<p>npm i -S hexo-generator-json-content</p>
+</blockquote>
+<h1 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h1><blockquote>
+<p>不需要本地数据库进行存储的,用的是第三方的.</p>
+<p>LeanCloud - 官网地址 - <a target="_blank" rel="noopener" href="https://www.leancloud.cn/">https://www.leancloud.cn/</a></p>
+<p>注册 - 登录 - 控制台 - 创建应用 - 右下设置 - 应用凭证</p>
+<p>appId - sljUq97vUAdLAo7XQdf13aFR-gzGzoHsz</p>
+<p>appKey - 3hn4ijEgSzJeRV4nkmXThmGV</p>
+</blockquote>
+<p><code>在hexo-theme-pure\_config.yml文件中配置</code></p>
+<blockquote>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">valine:</span> <span class="comment"># Valine. https://valine.js.org appid: sljUq97vUAdLAo7XQdf13aFR-gzGzoHsz  # your leancloud application appid appkey: 3hn4ijEgSzJeRV4nkmXThmGV# your leancloud application appkey notify: false # mail notifier , https://github.com/xCss/Valine/wiki verify: false # Verification code placeholder: Just go go # comment box placeholder avatar: mm # gravatar style meta: nick,mail,link # custom comment header pageSize: 10 # pagination size visitor: true # Article reading statistic https://valine.js.org/visitor.html</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>#字数统计&amp;阅读时长</p>
+<blockquote>
+<ol>
+<li><p>npm i -S hexo-wordcount</p>
+</li>
+<li><p>hexo-theme-pure_config.yml文件中配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">postCount:  enable: true  wordcount:</span> <span class="literal">true</span>  <span class="comment"># 文章字数统计  min2read: true  # 阅读时长预计 </span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h1 id="附件-优秀插件"><a href="#附件-优秀插件" class="headerlink" title="附件-优秀插件"></a>附件-优秀插件</h1><blockquote>
+<ol>
+<li><p>显示图片</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://gitee.com/guancg/hexo-asset-image.git --save</span><br></pre></td></tr></table></figure></li>
+<li><p>内置搜索</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -S hexo-generator-json-content</span><br></pre></td></tr></table></figure></li>
+<li><p>字数统计&amp;阅读时长</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -S hexo-wordcount</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li><p>github部署</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h1 id="github注册一下"><a href="#github注册一下" class="headerlink" title="github注册一下"></a>github注册一下</h1><blockquote>
+<p>github.com</p>
+</blockquote>
+<blockquote>
+<p>chrome浏览器 + iguge - <a target="_blank" rel="noopener" href="https://iguge.app/">https://iguge.app/</a></p>
+</blockquote>
+<blockquote>
+<p>新建的仓库的名称必须是<strong>guancgsuccess.github.io</strong></p>
+<p>仓库地址 - <a target="_blank" rel="noopener" href="https://github.com/guancgsuccess/guancgsuccess.github.io.git">https://github.com/guancgsuccess/guancgsuccess.github.io.git</a></p>
+</blockquote>
+<blockquote>
+<p>安装github部署插件</p>
+<p>npm install hexo-deployer-git –save</p>
+</blockquote>
+<blockquote>
+<p>hello-blog/_config.yml文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:type:</span> <span class="string">&#x27;git&#x27;</span><span class="attr">repo:</span> <span class="string">&#x27;https://github.com/guancgsuccess/guancgsuccess.github.io.git&#x27;</span><span class="attr">branch:</span> <span class="string">&#x27;master&#x27;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><code>hexo三连操作</code></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clhexo ghexo shexo d</span><br></pre></td></tr></table></figure>
+
+
+
+<p>浏览器输入 - guancgsuccess.github.io</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2021/07/13/hexo+github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="git_hexo" target="_blank" rel="external">http://example.com/2021/07/13/hexo+github搭建博客服务器/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/CharonZR" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/CharonZR" target="_blank"><span class="text-dark">极北贪星</span><small class="ml-1x">Ares &amp; DreamBoat</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/07/16/JAVA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E4%B8%80/" title="JAVA学习基础(一)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2021/07/13/%E5%96%B5%E5%96%B5/" title="喵喵"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/CharonZR" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: true,
+    appId: 'ju8vRbqqWdyDMjPfBvINd2DA-gzGzoHsz',
+    appKey: '0Imca0SeOUg1VUrUKxbCQsy2',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: true
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/ygbhf/clicklove/clicklove.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
