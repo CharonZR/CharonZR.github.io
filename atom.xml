@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-08-02T02:14:59.879Z</updated>
+  <updated>2021-08-02T07:52:27.555Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redhat8安装配置Nginx</title>
+    <link href="http://example.com/2021/08/02/Redhat8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AENginx/"/>
+    <id>http://example.com/2021/08/02/Redhat8%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AENginx/</id>
+    <published>2021-08-02T07:45:34.000Z</published>
+    <updated>2021-08-02T07:52:27.555Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Redhat-8安装Nginx&quot;&gt;&lt;a href=&quot;#Redhat-8安装Nginx&quot; class=&quot;headerlink&quot; title=&quot;Redhat-8安装Nginx&quot;&gt;&lt;/a&gt;Redhat-8安装Nginx&lt;/h1&gt;&lt;h2 id=&quot;Nginx-安装&quot;&gt;&lt;a </summary>
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>关于命令行窗口无法运行pip命令</title>
