@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-08-02T08:01:17.593Z</updated>
+  <updated>2021-08-03T01:37:27.578Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于安装zookeeper集群</title>
+    <link href="http://example.com/2021/08/03/%E5%85%B3%E4%BA%8E%E5%AE%89%E8%A3%85zookeeper%E9%9B%86%E7%BE%A4/"/>
+    <id>http://example.com/2021/08/03/%E5%85%B3%E4%BA%8E%E5%AE%89%E8%A3%85zookeeper%E9%9B%86%E7%BE%A4/</id>
+    <published>2021-08-03T00:53:33.000Z</published>
+    <updated>2021-08-03T01:37:27.578Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;开始安装配置zookeeper&quot;&gt;&lt;a href=&quot;#开始安装配置zookeeper&quot; class=&quot;headerlink&quot; title=&quot;开始安装配置zookeeper&quot;&gt;&lt;/a&gt;开始安装配置zookeeper&lt;/h3&gt;&lt;p&gt;1、远程下载zookeeper&lt;/p</summary>
+      
+    
+    
+    
+    
+    <category term="linux" scheme="http://example.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Redhat8安装配置Nginx</title>
