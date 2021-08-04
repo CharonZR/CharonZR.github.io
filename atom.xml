@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-08-03T02:15:41.081Z</updated>
+  <updated>2021-08-04T03:21:52.989Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初探Nginx架构</title>
+    <link href="http://example.com/2021/08/04/%E5%88%9D%E6%8E%A2Nginx%E6%9E%B6%E6%9E%84/"/>
+    <id>http://example.com/2021/08/04/%E5%88%9D%E6%8E%A2Nginx%E6%9E%B6%E6%9E%84/</id>
+    <published>2021-08-04T03:20:56.000Z</published>
+    <updated>2021-08-04T03:21:52.989Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;初探-Nginx-架构&quot;&gt;&lt;a href=&quot;#初探-Nginx-架构&quot; class=&quot;headerlink&quot; title=&quot;初探 Nginx 架构&quot;&gt;&lt;/a&gt;初探 Nginx 架构&lt;/h2&gt;&lt;p&gt;众所周知，Nginx 性能高，而 Nginx 的高性能与其架构是分不</summary>
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>关于安装zookeeper集群</title>

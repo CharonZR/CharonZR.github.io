@@ -17,21 +17,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>集合框架区别 | 雾海飞花のBlog</title>
-  <meta name="description" content="集合框架HashMap和HashTable的区别 ​    1.HashMap是HashTable的轻量级实现（即非线程安全的实现），他们都完成了Map接口，主要区别来自于HashMap允许空（null）键和空（null）值，由于非线程安全，在效率上可能高于HashTable。 ​    2.HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。 ​">
+  <title>初探Nginx架构 | 雾海飞花のBlog</title>
+  <meta name="description" content="初探 Nginx 架构众所周知，Nginx 性能高，而 Nginx 的高性能与其架构是分不开的。那么 Nginx 究竟是怎么样的呢？这一节我们先来初识一下 Nginx 框架吧。 Nginx 在启动后，在 unix 系统中会以 daemon 的方式在后台运行，后台进程包含一个 master 进程和多个 worker 进程。我们也可以手动地关掉后台模式，让 Nginx 在前台运行，并且通过配置让 Ng">
 <meta property="og:type" content="article">
-<meta property="og:title" content="集合框架区别">
-<meta property="og:url" content="http://example.com/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="初探Nginx架构">
+<meta property="og:url" content="http://example.com/2021/08/04/%E5%88%9D%E6%8E%A2Nginx%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="CharonZR">
-<meta property="og:description" content="集合框架HashMap和HashTable的区别 ​    1.HashMap是HashTable的轻量级实现（即非线程安全的实现），他们都完成了Map接口，主要区别来自于HashMap允许空（null）键和空（null）值，由于非线程安全，在效率上可能高于HashTable。 ​    2.HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。 ​">
+<meta property="og:description" content="初探 Nginx 架构众所周知，Nginx 性能高，而 Nginx 的高性能与其架构是分不开的。那么 Nginx 究竟是怎么样的呢？这一节我们先来初识一下 Nginx 框架吧。 Nginx 在启动后，在 unix 系统中会以 daemon 的方式在后台运行，后台进程包含一个 master 进程和多个 worker 进程。我们也可以手动地关掉后台模式，让 Nginx 在前台运行，并且通过配置让 Ng">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-07-31T00:46:48.000Z">
-<meta property="article:modified_time" content="2021-07-31T01:08:44.002Z">
+<meta property="og:image" content="https://atts.w3cschool.cn/attachments/image/wk/nginx/chapter-2-1.png">
+<meta property="article:published_time" content="2021-08-04T03:20:56.000Z">
+<meta property="article:modified_time" content="2021-08-04T03:21:52.989Z">
 <meta property="article:author" content="ZhouRui">
-<meta property="article:tag" content="面试">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://atts.w3cschool.cn/attachments/image/wk/nginx/chapter-2-1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/index.html">
+  <link rel="canonical" href="http://example.com/2021/08/04/%E5%88%9D%E6%8E%A2Nginx%E6%9E%B6%E6%9E%84/index.html">
   
     <link rel="alternate" href="/atom.xml" title="CharonZR" type="application/atom+xml">
   
@@ -343,14 +345,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-集合框架区别" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-初探Nginx架构" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      集合框架区别
+      初探Nginx架构
     </h1>
   
 
@@ -358,15 +360,15 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" class="article-date">
-	  <time datetime="2021-07-31T00:46:48.000Z" itemprop="datePublished">2021-07-31</time>
+	<a href="/2021/08/04/%E5%88%9D%E6%8E%A2Nginx%E6%9E%B6%E6%9E%84/" class="article-date">
+	  <time datetime="2021-08-04T03:20:56.000Z" itemprop="datePublished">2021-08-04</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
+	<a class="article-tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>
   </span>
 
 
@@ -381,125 +383,41 @@
 
 	<span class="article-read hidden-xs">
     	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" class="leancloud_visitors"  data-flag-title="集合框架区别">0</span>
+    	<span id="/2021/08/04/%E5%88%9D%E6%8E%A2Nginx%E6%9E%B6%E6%9E%84/" class="leancloud_visitors"  data-flag-title="初探Nginx架构">0</span>
     </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/08/04/%E5%88%9D%E6%8E%A2Nginx%E6%9E%B6%E6%9E%84/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.5k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h1><h2 id="HashMap和HashTable的区别"><a href="#HashMap和HashTable的区别" class="headerlink" title="HashMap和HashTable的区别"></a>HashMap和HashTable的区别</h2><blockquote>
-<p>​    1.HashMap是HashTable的轻量级实现（即非线程安全的实现），他们都完成了Map接口，主要区别来自于HashMap允许空（null）键和空（null）值，由于非线程安全，在效率上可能高于HashTable。</p>
-<p>​    2.HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。</p>
-<p>​    3.HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。因为contains方法容易让人引起误解。</p>
-<p>​    4.Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现。</p>
-<p>​    5.Hashtable的方法是Synchronize的，而HashMap不是，在多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。</p>
-</blockquote>
-<h2 id="ArrayList和LinkedList区别"><a href="#ArrayList和LinkedList区别" class="headerlink" title="ArrayList和LinkedList区别"></a>ArrayList和LinkedList区别</h2><blockquote>
-<ol>
-<li>ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。</li>
-<li>对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。</li>
-<li>对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据</li>
-</ol>
-</blockquote>
-<h2 id="List和Set区别"><a href="#List和Set区别" class="headerlink" title="List和Set区别"></a>List和Set区别</h2><blockquote>
-<p>两个接口都是继承自Collection，是常用来存放数据项的集合，主要区别如下：</p>
-<ol>
-<li>List和Set之间很重要的一个区别是是否允许重复元素的存在，在List中允许插入重复的元素，而在Set中不允许重复元素存在。</li>
-<li>与元素先后存放顺序有关，List是有序集合，会保留元素插入时的顺序，Set是无序集合。</li>
-<li>List可以通过下标来访问，而Set不能。</li>
-</ol>
-</blockquote>
-<h2 id="HashSet和HashMap区别"><a href="#HashSet和HashMap区别" class="headerlink" title="HashSet和HashMap区别"></a>HashSet和HashMap区别</h2><blockquote>
-<p>HashSet的底层是HashMap</p>
-</blockquote>
-<blockquote>
-<table>
-<thead>
-<tr>
-<th><em>HashMap</em></th>
-<th><em>HashSet</em></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>HashMap实现了Map接口</td>
-<td>HashSet实现了Set接口</td>
-</tr>
-<tr>
-<td>HashMap储存键值对</td>
-<td>HashSet仅仅存储对象</td>
-</tr>
-<tr>
-<td>使用put()方法将元素放入map中</td>
-<td>使用add()方法将元素放入set中</td>
-</tr>
-<tr>
-<td>HashMap中使用键对象来计算hashcode值</td>
-<td>HashSet使用成员对象来计算hashcode值，对于两个对象来说hashcode可能相同，所以equals()方法用来判断对象的相等性，如果两个对象不同的话，那么返回false</td>
-</tr>
-<tr>
-<td>HashMap比较快，因为是使用唯一的键来获取对象</td>
-<td>HashSet较HashMap来说比较慢</td>
-</tr>
-</tbody></table>
-</blockquote>
-<h2 id="ArrayList和HashSet区别"><a href="#ArrayList和HashSet区别" class="headerlink" title="ArrayList和HashSet区别"></a>ArrayList和HashSet区别</h2><blockquote>
-<p>1.HashSet 是不重复的 而且是无序的!</p>
-<p>​     唯一性保证. 重复对象equals方法返回为true ，重复对象hashCode方法返回相同的整数</p>
-<p>​     HashSet其实就是一个HashMap,只是你只能通过Set接口操作这个HashMap的key部分,</p>
-<p>2.ArrayList是可重复的 有序的</p>
-<p>​    特点：查询效率高，增删效率低 轻量级 线程不安全。</p>
-<p>arraylist：在数据的插入和删除方面速度不佳，但是在随意提取方面较快</p>
-</blockquote>
-<h2 id="HashSet和TreeSet区别"><a href="#HashSet和TreeSet区别" class="headerlink" title="HashSet和TreeSet区别"></a>HashSet和TreeSet区别</h2><blockquote>
-<p><strong>一、HashSet</strong></p>
-<p>HashSet内部的数据结构是哈希表，是线程不安全的。</p>
-<p>HashSet当中，保证集合中元素是唯一的方法。</p>
-<p>通过对象的hashCode和equals方法来完成对象唯一性的判断。</p>
-<p>假如，对象的hashCode值是一样的，那么就要用equals方法进行比较。</p>
-<p>假如，结果是true，那么就要视作相同元素，不存。</p>
-<p>假如，结果是false，那么就视为不同元素，存储。</p>
-<p>注意了，假如，元素要存储到HashCode当中，那么就一定要覆盖hashCode方法以及equals方法。</p>
-<p><strong>二、TreeSet</strong></p>
-<p>TreeSet能够对Set集合当中的元素进行排序，是线程不安全的。</p>
-<p>TreeSet当中，判断元素唯一性的方法是依据比较方法的返回结果是否为0，假如是0，那么是相同的元素，不存，假如不是0，那么就是不同的元素，存储。</p>
-<p>TreeSet对元素进行排序的方式：</p>
-<p>1、元素自身具备比较功能，也就是自然排序，需要实现Comparable接口，并覆盖其compareTo方法。</p>
-<p>2、元素自身不具备比较功能，那么就要实现Comparator接口，并覆盖其compare方法。</p>
-<p>除此之外，还要注意了，LinkedHashSet是一种有序的Set集合。</p>
-<p>也就是其元素的存入和输出的顺序是相同的。</p>
-</blockquote>
-<h2 id="HashMap和TreeMap区别"><a href="#HashMap和TreeMap区别" class="headerlink" title="HashMap和TreeMap区别"></a>HashMap和TreeMap区别</h2><blockquote>
-<p>HashMap的底层是Array，所以HashMap在添加，查找，删除等方法上面速度会非常快。而TreeMap的底层是一个Tree结构，所以速度会比较慢。</p>
-<p>另外HashMap因为要保存一个Array，所以会造成空间的浪费，而TreeMap只保存要保持的节点，所以占用的空间比较小。</p>
-<p>HashMap如果出现hash冲突的话，效率会变差，不过在java 8进行TreeNode转换之后，效率有很大的提升。</p>
-<p>TreeMap在添加和删除节点的时候会进行重排序，会对性能有所影响。           </p>
-</blockquote>
-<h2 id="ArrayList和Vector区别"><a href="#ArrayList和Vector区别" class="headerlink" title="ArrayList和Vector区别"></a>ArrayList和Vector区别</h2><blockquote>
-<ol>
-<li>Vector是线程安全的，ArrayList不是线程安全的。</li>
-<li>ArrayList在底层数组不够用时在原来的基础上扩展0.5倍，Vector是扩展1倍。</li>
-</ol>
-</blockquote>
-<h2 id="Array和ArrayList区别"><a href="#Array和ArrayList区别" class="headerlink" title="Array和ArrayList区别"></a>Array和ArrayList区别</h2><blockquote>
-<p>1.Array可以存基本数据类型和对象，ArrayList只能存对象。</p>
-<p>2.Array没有ArrayList内置的方法多。</p>
-<p>3.Array是指定固定大小的，而ArrayList可以自动进行扩容操作。</p>
-</blockquote>
-<h2 id="Iterator和Listiterator区别"><a href="#Iterator和Listiterator区别" class="headerlink" title="Iterator和Listiterator区别"></a>Iterator和Listiterator区别</h2><blockquote>
-<p>1.Iterator可以遍历set和List集合，而Listiterator只能遍历List集合。</p>
-<p>2.Iterator只能单向遍历，而Listiterator可以实现双向遍历。</p>
-<p>3.ListIterator从Iterator接口继承并实现来额外的一些功能方法。</p>
-</blockquote>
+        <h2 id="初探-Nginx-架构"><a href="#初探-Nginx-架构" class="headerlink" title="初探 Nginx 架构"></a>初探 Nginx 架构</h2><p>众所周知，Nginx 性能高，而 Nginx 的高性能与其架构是分不开的。那么 Nginx 究竟是怎么样的呢？这一节我们先来初识一下 Nginx 框架吧。</p>
+<p>Nginx 在启动后，在 unix 系统中会以 daemon 的方式在后台运行，后台进程包含一个 master 进程和多个 worker 进程。我们也可以手动地关掉后台模式，让 Nginx 在前台运行，并且通过配置让 Nginx 取消 master 进程，从而可以使 Nginx 以单进程方式运行。很显然，生产环境下我们肯定不会这么做，所以关闭后台模式，一般是用来调试用的，在后面的章节里面，我们会详细地讲解如何调试 Nginx。所以，我们可以看到，Nginx 是以多进程的方式来工作的，当然 Nginx 也是支持多线程的方式的，只是我们主流的方式还是多进程的方式，也是 Nginx 的默认方式。Nginx 采用多进程的方式有诸多好处，所以我就主要讲解 Nginx 的多进程模式吧。</p>
+<p>刚才讲到，Nginx 在启动后，会有一个 master 进程和多个 worker 进程。master 进程主要用来管理 worker 进程，包含：接收来自外界的信号，向各 worker 进程发送信号，监控 worker 进程的运行状态，当 worker 进程退出后(异常情况下)，会自动重新启动新的 worker 进程。而基本的网络事件，则是放在 worker 进程中来处理了。多个 worker 进程之间是对等的，他们同等竞争来自客户端的请求，各进程互相之间是独立的。一个请求，只可能在一个 worker 进程中处理，一个 worker 进程，不可能处理其它进程的请求。worker 进程的个数是可以设置的，一般我们会设置与机器cpu核数一致，这里面的原因与 Nginx 的进程模型以及事件处理模型是分不开的。Nginx 的进程模型，可以由下图来表示：</p>
+<p><img src="https://atts.w3cschool.cn/attachments/image/wk/nginx/chapter-2-1.png" alt="img"></p>
+<p>在 Nginx 启动后，如果我们要操作 Nginx，要怎么做呢？从上文中我们可以看到，master 来管理 worker 进程，所以我们只需要与 master 进程通信就行了。master 进程会接收来自外界发来的信号，再根据信号做不同的事情。所以我们要控制 Nginx，只需要通过 kill 向 master 进程发送信号就行了。比如<code>kill -HUP pid</code>，则是告诉 Nginx，从容地重启 Nginx，我们一般用这个信号来重启 Nginx，或重新加载配置，因为是从容地重启，因此服务是不中断的。master 进程在接收到 HUP 信号后是怎么做的呢？首先 master 进程在接到信号后，会先重新加载配置文件，然后再启动新的 worker 进程，并向所有老的 worker 进程发送信号，告诉他们可以光荣退休了。新的 worker 在启动后，就开始接收新的请求，而老的 worker 在收到来自 master 的信号后，就不再接收新的请求，并且在当前进程中的所有未处理完的请求处理完成后，再退出。当然，直接给 master 进程发送信号，这是比较老的操作方式，Nginx 在 0.8 版本之后，引入了一系列命令行参数，来方便我们管理。比如，<code>./nginx -s reload</code>，就是来重启 Nginx，<code>./nginx -s stop</code>，就是来停止 Nginx 的运行。如何做到的呢？我们还是拿 reload 来说，我们看到，执行命令时，我们是启动一个新的 Nginx 进程，而新的 Nginx 进程在解析到 reload 参数后，就知道我们的目的是控制 Nginx 来重新加载配置文件了，它会向 master 进程发送信号，然后接下来的动作，就和我们直接向 master 进程发送信号一样了。</p>
+<p>现在，我们知道了当我们在操作 Nginx 的时候，Nginx 内部做了些什么事情，那么，worker 进程又是如何处理请求的呢？我们前面有提到，worker 进程之间是平等的，每个进程，处理请求的机会也是一样的。当我们提供 80 端口的 http 服务时，一个连接请求过来，每个进程都有可能处理这个连接，怎么做到的呢？首先，每个 worker 进程都是从 master 进程 fork 过来，在 master 进程里面，先建立好需要 listen 的 socket（listenfd）之后，然后再 fork 出多个 worker 进程。所有 worker 进程的 listenfd 会在新连接到来时变得可读，为保证只有一个进程处理该连接，所有 worker 进程在注册 listenfd 读事件前抢 accept_mutex，抢到互斥锁的那个进程注册 listenfd 读事件，在读事件里调用 accept 接受该连接。当一个 worker 进程在 accept 这个连接之后，就开始读取请求，解析请求，处理请求，产生数据后，再返回给客户端，最后才断开连接，这样一个完整的请求就是这样的了。我们可以看到，一个请求，完全由 worker 进程来处理，而且只在一个 worker 进程中处理。</p>
+<p>那么，Nginx 采用这种进程模型有什么好处呢？当然，好处肯定会很多了。首先，对于每个 worker 进程来说，独立的进程，不需要加锁，所以省掉了锁带来的开销，同时在编程以及问题查找时，也会方便很多。其次，采用独立的进程，可以让互相之间不会影响，一个进程退出后，其它进程还在工作，服务不会中断，master 进程则很快启动新的 worker 进程。当然，worker 进程的异常退出，肯定是程序有 bug 了，异常退出，会导致当前 worker 上的所有请求失败，不过不会影响到所有请求，所以降低了风险。当然，好处还有很多，大家可以慢慢体会。</p>
+<p>上面讲了很多关于 Nginx 的进程模型，接下来，我们来看看 Nginx 是如何处理事件的。</p>
+<p>有人可能要问了，Nginx 采用多 worker 的方式来处理请求，每个 worker 里面只有一个主线程，那能够处理的并发数很有限啊，多少个 worker 就能处理多少个并发，何来高并发呢？非也，这就是 Nginx 的高明之处，Nginx 采用了异步非阻塞的方式来处理请求，也就是说，Nginx 是可以同时处理成千上万个请求的。想想 apache 的常用工作方式（apache 也有异步非阻塞版本，但因其与自带某些模块冲突，所以不常用），每个请求会独占一个工作线程，当并发数上到几千时，就同时有几千的线程在处理请求了。这对操作系统来说，是个不小的挑战，线程带来的内存占用非常大，线程的上下文切换带来的 cpu 开销很大，自然性能就上不去了，而这些开销完全是没有意义的。</p>
+<p>为什么 Nginx 可以采用异步非阻塞的方式来处理呢，或者异步非阻塞到底是怎么回事呢？我们先回到原点，看看一个请求的完整过程。首先，请求过来，要建立连接，然后再接收数据，接收数据后，再发送数据。具体到系统底层，就是读写事件，而当读写事件没有准备好时，必然不可操作，如果不用非阻塞的方式来调用，那就得阻塞调用了，事件没有准备好，那就只能等了，等事件准备好了，你再继续吧。阻塞调用会进入内核等待，cpu 就会让出去给别人用了，对单线程的 worker 来说，显然不合适，当网络事件越多时，大家都在等待呢，cpu 空闲下来没人用，cpu利用率自然上不去了，更别谈高并发了。好吧，你说加进程数，这跟apache的线程模型有什么区别，注意，别增加无谓的上下文切换。所以，在 Nginx 里面，最忌讳阻塞的系统调用了。不要阻塞，那就非阻塞喽。非阻塞就是，事件没有准备好，马上返回 EAGAIN，告诉你，事件还没准备好呢，你慌什么，过会再来吧。好吧，你过一会，再来检查一下事件，直到事件准备好了为止，在这期间，你就可以先去做其它事情，然后再来看看事件好了没。虽然不阻塞了，但你得不时地过来检查一下事件的状态，你可以做更多的事情了，但带来的开销也是不小的。所以，才会有了异步非阻塞的事件处理机制，具体到系统调用就是像 select/poll/epoll/kqueue 这样的系统调用。它们提供了一种机制，让你可以同时监控多个事件，调用他们是阻塞的，但可以设置超时时间，在超时时间之内，如果有事件准备好了，就返回。这种机制正好解决了我们上面的两个问题，拿 epoll 为例(在后面的例子中，我们多以 epoll 为例子，以代表这一类函数)，当事件没准备好时，放到 epoll 里面，事件准备好了，我们就去读写，当读写返回 EAGAIN 时，我们将它再次加入到 epoll 里面。这样，只要有事件准备好了，我们就去处理它，只有当所有事件都没准备好时，才在 epoll 里面等着。这样，我们就可以并发处理大量的并发了，当然，这里的并发请求，是指未处理完的请求，线程只有一个，所以同时能处理的请求当然只有一个了，只是在请求间进行不断地切换而已，切换也是因为异步事件未准备好，而主动让出的。这里的切换是没有任何代价，你可以理解为循环处理多个准备好的事件，事实上就是这样的。与多线程相比，这种事件处理方式是有很大的优势的，不需要创建线程，每个请求占用的内存也很少，没有上下文切换，事件处理非常的轻量级。并发数再多也不会导致无谓的资源浪费（上下文切换）。更多的并发数，只是会占用更多的内存而已。 我之前有对连接数进行过测试，在 24G 内存的机器上，处理的并发请求数达到过 200 万。现在的网络服务器基本都采用这种方式，这也是nginx性能高效的主要原因。</p>
+<p>我们之前说过，推荐设置 worker 的个数为 cpu 的核数，在这里就很容易理解了，更多的 worker 数，只会导致进程来竞争 cpu 资源了，从而带来不必要的上下文切换。而且，nginx为了更好的利用多核特性，提供了 cpu 亲缘性的绑定选项，我们可以将某一个进程绑定在某一个核上，这样就不会因为进程的切换带来 cache 的失效。像这种小的优化在 Nginx 中非常常见，同时也说明了 Nginx 作者的苦心孤诣。比如，Nginx 在做 4 个字节的字符串比较时，会将 4 个字符转换成一个 int 型，再作比较，以减少 cpu 的指令数等等。</p>
+<p>现在，知道了 Nginx 为什么会选择这样的进程模型与事件模型了。对于一个基本的 Web 服务器来说，事件通常有三种类型，网络事件、信号、定时器。从上面的讲解中知道，网络事件通过异步非阻塞可以很好的解决掉。如何处理信号与定时器？</p>
+<p>首先，信号的处理。对 Nginx 来说，有一些特定的信号，代表着特定的意义。信号会中断掉程序当前的运行，在改变状态后，继续执行。如果是系统调用，则可能会导致系统调用的失败，需要重入。关于信号的处理，大家可以学习一些专业书籍，这里不多说。对于 Nginx 来说，如果nginx正在等待事件（epoll_wait 时），如果程序收到信号，在信号处理函数处理完后，epoll_wait 会返回错误，然后程序可再次进入 epoll_wait 调用。</p>
+<p>另外，再来看看定时器。由于 epoll_wait 等函数在调用的时候是可以设置一个超时时间的，所以 Nginx 借助这个超时时间来实现定时器。nginx里面的定时器事件是放在一颗维护定时器的红黑树里面，每次在进入 epoll_wait前，先从该红黑树里面拿到所有定时器事件的最小时间，在计算出 epoll_wait 的超时时间后进入 epoll_wait。所以，当没有事件产生，也没有中断信号时，epoll_wait 会超时，也就是说，定时器事件到了。这时，nginx会检查所有的超时事件，将他们的状态设置为超时，然后再去处理网络事件。由此可以看出，当我们写 Nginx 代码时，在处理网络事件的回调函数时，通常做的第一个事情就是判断超时，然后再去处理网络事件。</p>
+<p>我们可以用一段伪代码来总结一下 Nginx 的事件处理模型：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">while (true) &#123;</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> run_tasks:</span><br><span class="line">        t.handler();</span><br><span class="line">    update_time(&amp;now);</span><br><span class="line">    timeout = ETERNITY;</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> wait_tasks: /* sorted already */</span><br><span class="line">        <span class="keyword">if</span> (t.<span class="built_in">time</span> &lt;= now) &#123;</span><br><span class="line">            t.timeout_handler();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            timeout = t.<span class="built_in">time</span> - now;</span><br><span class="line">            <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    nevents = poll_function(events, timeout);</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nevents:</span><br><span class="line">        task t;</span><br><span class="line">        <span class="keyword">if</span> (events[i].<span class="built_in">type</span> == READ) &#123;</span><br><span class="line">            t.handler = read_handler;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; /* events[i].<span class="built_in">type</span> == WRITE */</span><br><span class="line">            t.handler = write_handler;</span><br><span class="line">        &#125;</span><br><span class="line">        run_tasks_add(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
@@ -509,7 +427,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2021/07/31/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" title="集合框架区别" target="_blank" rel="external">http://example.com/2021/07/31/集合框架区别/</a>
+      <a href="http://example.com/2021/08/04/%E5%88%9D%E6%8E%A2Nginx%E6%9E%B6%E6%9E%84/" title="初探Nginx架构" target="_blank" rel="external">http://example.com/2021/08/04/初探Nginx架构/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -555,13 +473,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2021/08/02/%E5%85%B3%E4%BA%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Cpip%E5%91%BD%E4%BB%A4/" title="关于命令行窗口无法运行pip命令"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2021/07/16/JAVA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E4%B8%80/" title="JAVA学习基础(一)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/08/03/%E5%85%B3%E4%BA%8E%E5%AE%89%E8%A3%85zookeeper%E9%9B%86%E7%BE%A4/" title="关于安装zookeeper集群"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
