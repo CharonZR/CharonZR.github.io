@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-08-04T03:21:52.989Z</updated>
+  <updated>2021-08-09T10:32:53.631Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读懂JMM</title>
+    <link href="http://example.com/2021/08/09/%E8%AF%BB%E6%87%82JMM/"/>
+    <id>http://example.com/2021/08/09/%E8%AF%BB%E6%87%82JMM/</id>
+    <published>2021-08-09T09:59:39.000Z</published>
+    <updated>2021-08-09T10:32:53.631Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;什么是JMM&quot;&gt;&lt;a href=&quot;#什么是JMM&quot; class=&quot;headerlink&quot; title=&quot;什么是JMM&quot;&gt;&lt;/a&gt;什么是JMM&lt;/h1&gt;&lt;p&gt;JMM就是Java内存模型(java memory model)。因为在不同的硬件生产商和不同的操作系统下，</summary>
+      
+    
+    
+    
+    
+    <category term="JAVA" scheme="http://example.com/tags/JAVA/"/>
+    
+  </entry>
   
   <entry>
     <title>初探Nginx架构</title>
